@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "874903294378",
+    "firebase_url": "https://hotplace-79a45.firebaseio.com",
+    "project_id": "hotplace-79a45",
+    "storage_bucket": "hotplace-79a45.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:874903294378:android:a139c942ab32495f9b5bd3",
+        "android_client_info": {
+          "package_name": "com.kookminuniv.team17.hotplace"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "874903294378-genjar4bh58s3r463aijhlpvgpk7i7is.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kookminuniv.team17.hotplace",
+            "certificate_hash": "4c51363d2d6dd4767e59743db8459cf193a9649d"
+          }
+        },
+        {
+          "client_id": "874903294378-kq7g9j95347q19uvop8hb8d6pl327s65.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5kSzteADrKCu_aeyfqpZ-caN7TWFLVUg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "874903294378-kq7g9j95347q19uvop8hb8d6pl327s65.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
