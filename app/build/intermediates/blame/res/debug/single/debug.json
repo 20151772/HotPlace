@@ -8,6 +8,10 @@
         "source": "D:\\Workspace\\AndroidStudio\\HotPlace\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
     },
     {
+        "merged": "D:\\Workspace\\AndroidStudio\\HotPlace\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_location.xml.flat",
+        "source": "D:\\Workspace\\AndroidStudio\\HotPlace\\app\\src\\main\\res\\layout\\activity_location.xml"
+    },
+    {
         "merged": "D:\\Workspace\\AndroidStudio\\HotPlace\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
         "source": "D:\\Workspace\\AndroidStudio\\HotPlace\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
@@ -16,8 +20,16 @@
         "source": "D:\\Workspace\\AndroidStudio\\HotPlace\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
     },
     {
+        "merged": "D:\\Workspace\\AndroidStudio\\HotPlace\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_article.xml.flat",
+        "source": "D:\\Workspace\\AndroidStudio\\HotPlace\\app\\src\\main\\res\\layout\\activity_article.xml"
+    },
+    {
         "merged": "D:\\Workspace\\AndroidStudio\\HotPlace\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
         "source": "D:\\Workspace\\AndroidStudio\\HotPlace\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "D:\\Workspace\\AndroidStudio\\HotPlace\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_signup.xml.flat",
+        "source": "D:\\Workspace\\AndroidStudio\\HotPlace\\app\\src\\main\\res\\layout\\activity_signup.xml"
     },
     {
         "merged": "D:\\Workspace\\AndroidStudio\\HotPlace\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
@@ -32,6 +44,10 @@
         "source": "D:\\Workspace\\AndroidStudio\\HotPlace\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
     },
     {
+        "merged": "D:\\Workspace\\AndroidStudio\\HotPlace\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_signin.xml.flat",
+        "source": "D:\\Workspace\\AndroidStudio\\HotPlace\\app\\src\\main\\res\\layout\\activity_signin.xml"
+    },
+    {
         "merged": "D:\\Workspace\\AndroidStudio\\HotPlace\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
         "source": "D:\\Workspace\\AndroidStudio\\HotPlace\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
     },
@@ -42,6 +58,10 @@
     {
         "merged": "D:\\Workspace\\AndroidStudio\\HotPlace\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
         "source": "D:\\Workspace\\AndroidStudio\\HotPlace\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "D:\\Workspace\\AndroidStudio\\HotPlace\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_logo.xml.flat",
+        "source": "D:\\Workspace\\AndroidStudio\\HotPlace\\app\\src\\main\\res\\layout\\activity_logo.xml"
     },
     {
         "merged": "D:\\Workspace\\AndroidStudio\\HotPlace\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_launcher_background.xml.flat",
