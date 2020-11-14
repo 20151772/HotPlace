@@ -20,10 +20,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
-    private Button button1;
-    private EditText editText1;
-    private TextView textView1;
-
     DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
     DatabaseReference conditionRef = mRootRef.child("text");
 
@@ -31,13 +27,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setTitle("Fisrt Activity");
-
-        button1 = (Button) findViewById(R.id.button);
-        editText1 = (EditText) findViewById(R.id.editText);
-        textView1 = (TextView) findViewById(R.id.textView);
+        setTitle("Main Activity");
     }
 
+    /*
     protected void onStart() {
         super.onStart();
 
@@ -61,4 +54,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+     */
 }
