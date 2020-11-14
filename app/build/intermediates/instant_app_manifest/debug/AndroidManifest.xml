@@ -22,6 +22,11 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
+        <activity android:name="com.kookminuniv.team17.hotplace.LocationActivity" />
+        <activity android:name="com.kookminuniv.team17.hotplace.ArticleActivity" />
+        <activity android:name="com.kookminuniv.team17.hotplace.SignupActivity" />
+        <activity android:name="com.kookminuniv.team17.hotplace.SigninActivity" />
+        <activity android:name="com.kookminuniv.team17.hotplace.LogoActivity" />
         <activity android:name="com.kookminuniv.team17.hotplace.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,6 +48,12 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
+        <provider
+            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+            android:authorities="com.kookminuniv.team17.hotplace.lifecycle-process"
+            android:exported="false"
+            android:multiprocess="true" />
     </application>
 
 </manifest>

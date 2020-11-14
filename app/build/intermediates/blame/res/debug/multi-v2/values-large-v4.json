@@ -4,6 +4,23 @@
             "outputFile": "D:\\Workspace\\AndroidStudio\\HotPlace\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-large-v4\\values-large-v4.xml",
             "map": [
                 {
+                    "source": "C:\\Users\\KMG\\.gradle\\caches\\transforms-2\\files-2.1\\33693b388486ae3bef4fe39551b97937\\material-1.0.0\\res\\values-large-v4\\values-large-v4.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,177",
+                        "endColumns": "121,133",
+                        "endOffsets": "172,306"
+                    },
+                    "to": {
+                        "startLines": "11,12",
+                        "startColumns": "4,4",
+                        "startOffsets": "752,874",
+                        "endColumns": "121,133",
+                        "endOffsets": "869,1003"
+                    }
+                },
+                {
                     "source": "C:\\Users\\KMG\\.gradle\\caches\\transforms-2\\files-2.1\\5865bef9f517aac03541effd167a8116\\appcompat-1.2.0\\res\\values-large-v4\\values-large-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10",

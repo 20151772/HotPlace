@@ -1,3 +1,7 @@
+// MainActivity: 프래그먼트로 홈과 마이페이지 구현
+// 홈: 글 리스트(사진, 제목, 위치)와 글쓰기 버튼
+// 마이페이지: 아이디, 위치, 글 쓴 갯수 정도
+
 package com.kookminuniv.team17.hotplace;
 
 import androidx.annotation.NonNull;
@@ -16,10 +20,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
-    private Button button1;
-    private EditText editText1;
-    private TextView textView1;
-
     DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
     DatabaseReference conditionRef = mRootRef.child("text");
 
@@ -27,13 +27,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setTitle("Fisrt Activity");
-
-        button1 = (Button) findViewById(R.id.button);
-        editText1 = (EditText) findViewById(R.id.editText);
-        textView1 = (TextView) findViewById(R.id.textView);
+        setTitle("Main Activity");
     }
 
+    /*
     protected void onStart() {
         super.onStart();
 
@@ -57,4 +54,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+     */
 }
