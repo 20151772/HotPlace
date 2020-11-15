@@ -24,6 +24,7 @@ public class SignupActivity extends AppCompatActivity {
 
     EditText userIdText, passwordText, passwordCheckText;
     Button signupBtn;
+
     FirebaseDatabase db = FirebaseDatabase.getInstance();
 
     @Override

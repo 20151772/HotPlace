@@ -24,6 +24,7 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText userIdText, passwordText, passwordCheckText;
     Button signupBtn, loginBtn;
+
     FirebaseDatabase db = FirebaseDatabase.getInstance();
 
     @Override
@@ -77,9 +78,10 @@ public class LoginActivity extends AppCompatActivity {
                                 if(password.equals(correctPassword)){
                                     //+ 로그인 정보 저장
                                     // 임시로 바로 글로 전환
-                                    Intent intent = new Intent(getApplicationContext(), ArticleWriteActivity.class);
+                                    Intent intent = new Intent(getApplicationContext(), ArticleActivity.class);
                                     intent.putExtra("article_id", 1);
                                     startActivity(intent);
+                                    finish();
                                     return;
                                     //+ 로그인 액티비티 종료
                                 }

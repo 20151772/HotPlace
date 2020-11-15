@@ -4,7 +4,9 @@ package com.kookminuniv.team17.hotplace;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 
 public class LogoActivity extends AppCompatActivity {
 
@@ -12,5 +14,24 @@ public class LogoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logo);
+
+        askPermission();
+        startLoading();
+    }
+
+    private void startLoading(){
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable(){
+            @Override
+            public void run(){
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        }, 2000);
+    }
+
+    private void askPermission(){
+
     }
 }

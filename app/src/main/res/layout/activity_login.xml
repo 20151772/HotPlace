@@ -10,9 +10,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="150dp"
         android:layout_marginEnd="35dp"
         android:layout_marginBottom="150dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
         android:stretchColumns="0, 1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,7 +49,7 @@
 
             <Space
                 android:layout_width="wrap_content"
-                android:layout_height="10dp" />
+                android:layout_height="15dp" />
         </TableRow>
 
         <TableRow
@@ -78,7 +80,7 @@
 
             <Space
                 android:layout_width="wrap_content"
-                android:layout_height="50dp" />
+                android:layout_height="35dp" />
         </TableRow>
 
         <TableRow
@@ -89,6 +91,8 @@
                 android:id="@+id/loginBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="75dp"
+                android:layout_marginRight="75dp"
                 android:layout_span="2"
                 android:text="로그인" />
 
@@ -111,6 +115,8 @@
                 android:id="@+id/signupBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="75dp"
+                android:layout_marginRight="75dp"
                 android:layout_span="2"
                 android:text="회원가입" />
         </TableRow>

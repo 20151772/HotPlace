@@ -17,6 +17,6 @@ public class PhotoViewHolder extends RecyclerView.ViewHolder {
     public void onBind(ImgData data){
         this.data = data;
 
-        imageView.setImageResource(data.getImg());
+        imageView.setImageBitmap(data.getImg());
     }
 }

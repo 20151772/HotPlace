@@ -1431,6 +1431,7 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
+id imageBtn
 id imageView
 id info
 id invisible
@@ -1450,6 +1451,8 @@ id listMode
 id list_item
 id locationBtn
 id loginBtn
+id logoImage
+id logoText
 id masked
 id media_actions
 id message
