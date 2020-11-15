@@ -8,8 +8,13 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.app.Activity;
 import android.content.ClipData;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -25,6 +30,9 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,6 +43,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URI;
 import java.sql.Array;
 import java.sql.Ref;
@@ -45,6 +54,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class ArticleWriteActivity extends AppCompatActivity {
+    UserInformation user;
 
     final int PICTURE_REQUEST_CODE = 100;
 
@@ -57,15 +67,19 @@ public class ArticleWriteActivity extends AppCompatActivity {
 
     FirebaseDatabase db = FirebaseDatabase.getInstance();
     DatabaseReference dbRef;
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
-    //+ 로그인된 아이디
-    String user_id = "test_account";
-    String location = "Korea";
+    Location currentLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_article_write);
+
+        Intent intent = getIntent();
+        if(intent != null){
+            user = (UserInformation)intent.getSerializableExtra("UserObject");
+        }
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("글쓰기");
@@ -85,6 +99,8 @@ public class ArticleWriteActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {}
         });
+
+        currentLocation = getLocation();
 
         // 이미지 다중 선택
         imageView.setOnClickListener(new View.OnClickListener() {
@@ -143,8 +159,19 @@ public class ArticleWriteActivity extends AppCompatActivity {
                 }
                 else {
                     saveContents();
-                    Toast.makeText(this, "저장이 완료되었습니다.", Toast.LENGTH_SHORT).show();
+
                     Intent intent = new Intent(getApplicationContext(), ArticleActivity.class);
+                    intent.putExtra("UserObject", user);
+                    intent.putExtra("article_id", Integer.toString(articles_count));
+
+                    try {
+                        Thread.sleep(5000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                    Toast.makeText(this, "저장이 완료되었습니다.", Toast.LENGTH_SHORT).show();
+
                     startActivity(intent);
                     finish();
                 }
@@ -167,8 +194,9 @@ public class ArticleWriteActivity extends AppCompatActivity {
         dbRef.child(strAC).child("time").setValue(formatDate);  // 글 쓴 시간
         dbRef.child(strAC).child("title").setValue(title);  // 제목
         dbRef.child(strAC).child("contents").setValue(contents);  // 글 내용
-        dbRef.child(strAC).child("user_id").setValue(user_id);  // 글쓴이
-        dbRef.child(strAC).child("location").setValue(location);  // 위치
+        dbRef.child(strAC).child("user_id").setValue(user.getUser_id());  // 글쓴이
+        dbRef.child(strAC).child("location_Latitude").setValue(currentLocation.getLatitude());  // 위도
+        dbRef.child(strAC).child("location_Longitude").setValue(currentLocation.getLongitude());  // 경도
         dbRef.child("articles_count").setValue(articles_count+1);  // 글 총 갯수 증가
 
         // 이미지 스토리지에 저장
@@ -181,19 +209,48 @@ public class ArticleWriteActivity extends AppCompatActivity {
                 String fileName = sdf.format(new Date()) + strI + ".png";
                 String totalPath = strAC + "/" + fileName;
                 imageNames.add(totalPath);
-                StorageReference imageRef = storage.getReference().child(totalPath);
-                imageRef.putFile(filePath.get(i));
+                FirebaseUser fbuser = mAuth.getCurrentUser();
+                if(fbuser != null) {
+                    StorageReference imageRef = storage.getReference().child(totalPath);
+                    imageRef.putFile(filePath.get(i));
+                } else{
+                    signInAnonymously();
+                }
             }
+            dbRef.child(strAC).child("image_count").setValue(imageNames.size());
         }
         else{
             imageNames.add("None");
+            dbRef.child(strAC).child("image_count").setValue(0);
         }
         dbRef.child(strAC).child("image_names").setValue(imageNames);
-        dbRef.child(strAC).child("image_count").setValue(imageNames.size());
+    }
+
+    private Location getLocation() {
+        final LocationManager locationManager = (LocationManager) getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(this, "위치 권한에 동의해주세요.", Toast.LENGTH_LONG).show();
+            finish();
+        }
+        Location userLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+        return userLocation;
     }
 
     public boolean onSupportNavigateUp(){
         onBackPressed();
         return super.onSupportNavigateUp();
+    }
+
+    private void signInAnonymously(){
+        mAuth.signInAnonymously().addOnSuccessListener(this, new OnSuccessListener<AuthResult>() {
+            @Override public void onSuccess(AuthResult authResult) {
+                // do your stuff
+            }
+        }) .addOnFailureListener(this, new OnFailureListener() {
+            @Override public void onFailure(@NonNull Exception exception) {
+                Log.e("TAG", "signInAnonymously:FAILURE", exception);
+            }
+        });
     }
 }

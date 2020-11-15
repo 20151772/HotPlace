@@ -21,6 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Iterator;
 
 public class LoginActivity extends AppCompatActivity {
+    UserInformation user;
 
     EditText userIdText, passwordText, passwordCheckText;
     Button signupBtn, loginBtn;
@@ -31,6 +32,11 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        Intent intent = getIntent();
+        if(intent != null){
+            user = (UserInformation)intent.getSerializableExtra("UserObject");
+        }
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("로그인");
@@ -78,8 +84,14 @@ public class LoginActivity extends AppCompatActivity {
                                 if(password.equals(correctPassword)){
                                     //+ 로그인 정보 저장
                                     // 임시로 바로 글로 전환
-                                    Intent intent = new Intent(getApplicationContext(), ArticleActivity.class);
-                                    intent.putExtra("article_id", 1);
+                                    user.setUser_id(user_id);
+                                    user.setLogin(true);
+
+                                    Intent intent = new Intent(getApplicationContext(), ArticleWriteActivity.class);
+                                    intent.putExtra("UserObject", user);
+
+                                    Toast.makeText(getApplicationContext(), "로그인 되었습니다.", Toast.LENGTH_SHORT).show();
+
                                     startActivity(intent);
                                     finish();
                                     return;
