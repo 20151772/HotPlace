@@ -23,6 +23,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.internal.Storage;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -40,31 +45,41 @@ import java.util.Iterator;
 import java.util.List;
 
 public class ArticleActivity extends AppCompatActivity {
+    UserInformation user;
 
-    public String title, contents, location, time, user_id, imageCount;
+    public String title, contents, time, user_id;
+    public Double longitude, latitude;
+    int imageCount;
     public ArrayList<String> imageNames;
     public ArrayList<Uri> filePath;
     ArrayList<ImgData> list;
+    File cacheFolder;
 
     ViewPager2 vp2;
-    TextView user_idText, timeText, titleText, contentsText;
+    TextView user_idText, timeText, titleText, contentsText, noimgText;
     ImageButton locationBtn;
     Button imageBtn;
 
     FirebaseDatabase db = FirebaseDatabase.getInstance();
     DatabaseReference articlesRef;
-    FirebaseStorage storage = FirebaseStorage.getInstance();
+    private FirebaseStorage storage = FirebaseStorage.getInstance();
+    StorageReference storageRef;
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
-    //+ article_id
-    String article_id = "2";
+    String article_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_article);
 
+        Intent intent = getIntent();
+        if(intent != null){
+            user = (UserInformation)intent.getSerializableExtra("UserObject");
+            article_id = intent.getStringExtra("article_id");
+        }
+
         final ActionBar actionBar = getSupportActionBar();
-        //actionBar.setTitle("글");
         actionBar.setDisplayHomeAsUpEnabled(true);  // 뒤로가기
 
         vp2 = (ViewPager2) findViewById(R.id.vp2);
@@ -72,6 +87,7 @@ public class ArticleActivity extends AppCompatActivity {
         timeText = (TextView) findViewById(R.id.timeText);
         titleText = (TextView) findViewById(R.id.titleText);
         contentsText = (TextView) findViewById(R.id.contentsText);
+        noimgText = (TextView) findViewById(R.id.noimgText);
         locationBtn = (ImageButton) findViewById(R.id.locationBtn);
         imageBtn = (Button) findViewById(R.id.imageBtn);
 
@@ -79,6 +95,11 @@ public class ArticleActivity extends AppCompatActivity {
         filePath = new ArrayList<Uri>();
         list = new ArrayList<>();
 
+        storageRef = storage.getReference();
+        cacheFolder = new File(getApplicationContext().getCacheDir().toString() + "/images");
+        if(!cacheFolder.exists()){
+            cacheFolder.mkdir();
+        }
         getInfoFromDB();
 
         // 위치 정보 버튼
@@ -86,7 +107,8 @@ public class ArticleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), LocationActivity.class);
-                intent.putExtra("location", location);
+                intent.putExtra("latitude", latitude);
+                intent.putExtra("longitude", longitude);
                 startActivity(intent);
             }
         });
@@ -94,14 +116,19 @@ public class ArticleActivity extends AppCompatActivity {
         imageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final File cacheFolder = getApplicationContext().getCacheDir();
-                File[] imageFileList = cacheFolder.listFiles();
-                for (int j = 0; j < imageFileList.length; j++) {
-                    Bitmap bmap = BitmapFactory.decodeFile(imageFileList[j].getAbsolutePath());
-                    list.add(new ImgData(bmap));
+                if(imageCount != 0) {
+                    File[] imageFileList = cacheFolder.listFiles();
+                    for (int j = 0; j < imageFileList.length; j++) {
+                        Log.d("fuck", imageFileList[j].toString());
+                        Bitmap bmap = BitmapFactory.decodeFile(imageFileList[j].getAbsolutePath());
+                        list.add(new ImgData(bmap));
+                    }
+                    vp2.setAdapter(new PhotoAdapter(list));
                 }
-                vp2.setAdapter(new PhotoAdapter(list));
-                imageBtn.setVisibility(View.INVISIBLE);
+                else{
+                    noimgText.setVisibility(View.VISIBLE);
+                }
+                imageBtn.setVisibility(View.GONE);
             }
         });
     }
@@ -122,9 +149,9 @@ public class ArticleActivity extends AppCompatActivity {
                 title = dataSnapshot.child(article_id).child("title").getValue(String.class);
                 contents = dataSnapshot.child(article_id).child("contents").getValue(String.class);
                 time = dataSnapshot.child(article_id).child("time").getValue(String.class);
-                location = dataSnapshot.child(article_id).child("location").getValue(String.class);
-                imageCount = dataSnapshot.child(article_id).child("image_count").getValue(String.class);
-                Log.d("asdf", imageCount);
+                latitude = dataSnapshot.child(article_id).child("location_Latitude").getValue(Double.class);
+                longitude = dataSnapshot.child(article_id).child("location_Longitude").getValue(Double.class);
+                imageCount = dataSnapshot.child(article_id).child("image_count").getValue(int.class);
 
                 // 텍스트 정보 입력
                 user_idText.setText(user_id);
@@ -132,18 +159,9 @@ public class ArticleActivity extends AppCompatActivity {
                 contentsText.setText(contents);
                 timeText.setText(time);
 
-                if(Integer.parseInt(imageCount) == 0) {
-                    File file = new File(Uri.parse("android.resource://"
-                            + R.class.getPackage().getName()
-                            + "/"
-                            + R.drawable.ic_launcher_foreground).toString());
-                    Bitmap bmap = BitmapFactory.decodeFile(file.getAbsolutePath());
-                    list.add(new ImgData(bmap));
-                }
-                for (int i = 0; i < Integer.parseInt(imageCount); i++) {
+                for (int i = 0; i < imageCount; i++) {
                     final int finalI = i;
                     String strI = Integer.toString(i);
-
                     DatabaseReference imageDRef = articlesRef.child(article_id).child("image_names").child(strI);
 
                     imageDRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -153,32 +171,37 @@ public class ArticleActivity extends AppCompatActivity {
                             imageNames.add(finalI, tmp);
 
                             // 그때마다 이미지 저장
-                            StorageReference storageRef = storage.getReference();
-                            StorageReference imageSRef = storageRef.child(imageNames.get(finalI));
+                            FirebaseUser fbuser = mAuth.getCurrentUser();
+                            if(fbuser != null) {
+                                Log.d("asdf", "1");
+                                StorageReference imageSRef = storageRef.child(imageNames.get(finalI));
 
-                            try {
-                                File localFile = File.createTempFile("images", ".png");
-                                imageSRef.getFile(localFile);
-                                //Bitmap bmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
-                                //list.add(new ImgData(bmap));
-                                //Log.d("asdf", localFile.toString());
-                            } catch (IOException e) {
-                                e.printStackTrace();
+                                try {
+                                    Log.d("asdf", "2");
+                                    Log.d("asdf", imageNames.get(finalI));
+                                    File localFile = File.createTempFile("images", ".png", cacheFolder);
+                                    imageSRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                                        @Override
+                                        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                                            Log.d("asdf", "good");
+                                        }
+                                    }).addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Log.d("asdf", "fuck");
+                                        }
+                                    });
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            } else{
+                                signInAnonymously();
                             }
                         }
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
                         }
                     });
-                        /*
-                        Log.d("asdf", "2");
-                        final File cacheFolder = getApplicationContext().getCacheDir();
-                        File[] imageFileList = cacheFolder.listFiles();
-                        for (int j = 0; j < imageFileList.length; j++) {
-                            Bitmap bmap = BitmapFactory.decodeFile(imageFileList[i].getAbsolutePath());
-                            list.add(new ImgData(bmap));
-                        }
-                        vp2.setAdapter(new PhotoAdapter(list));*/
                 }
             }
             @Override
@@ -191,5 +214,17 @@ public class ArticleActivity extends AppCompatActivity {
         super.onDestroy();
         CacheClear cc = new CacheClear();
         cc.clearCache(this);
+    }
+
+    private void signInAnonymously(){
+        mAuth.signInAnonymously().addOnSuccessListener(this, new OnSuccessListener<AuthResult>() {
+            @Override public void onSuccess(AuthResult authResult) {
+                // do your stuff
+            }
+        }) .addOnFailureListener(this, new OnFailureListener() {
+            @Override public void onFailure(@NonNull Exception exception) {
+                Log.e("TAG", "signInAnonymously:FAILURE", exception);
+            }
+        });
     }
 }

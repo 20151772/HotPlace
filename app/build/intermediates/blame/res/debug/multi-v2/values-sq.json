@@ -4,7 +4,7 @@
             "outputFile": "D:\\Workspace\\AndroidStudio\\HotPlace\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sq\\values-sq.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\KMG\\.gradle\\caches\\transforms-2\\files-2.1\\243669cf9793d55f92150690e17e98dc\\jetified-play-services-base-16.0.1\\res\\values-sq\\values.xml",
+                    "source": "C:\\Users\\KMG\\.gradle\\caches\\transforms-2\\files-2.1\\7f1c05604811b5d8b0b39e85e23d9427\\jetified-play-services-base-17.0.0\\res\\values-sq\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\KMG\\.gradle\\caches\\transforms-2\\files-2.1\\977dbb1fac743503e98bbe4e10f4dab1\\jetified-play-services-basement-16.1.0\\res\\values-sq\\values.xml",
+                    "source": "C:\\Users\\KMG\\.gradle\\caches\\transforms-2\\files-2.1\\aa0b0b1b8ee658361451379d95ea2969\\jetified-play-services-basement-17.0.0\\res\\values-sq\\values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",

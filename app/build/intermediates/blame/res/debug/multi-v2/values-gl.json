@@ -4,24 +4,7 @@
             "outputFile": "D:\\Workspace\\AndroidStudio\\HotPlace\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-gl\\values-gl.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\KMG\\.gradle\\caches\\transforms-2\\files-2.1\\977dbb1fac743503e98bbe4e10f4dab1\\jetified-play-services-basement-16.1.0\\res\\values-gl\\values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "247",
-                        "endColumns": "192",
-                        "endOffsets": "439"
-                    },
-                    "to": {
-                        "startLines": "37",
-                        "startColumns": "4",
-                        "startOffsets": "4036",
-                        "endColumns": "192",
-                        "endOffsets": "4224"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\KMG\\.gradle\\caches\\transforms-2\\files-2.1\\243669cf9793d55f92150690e17e98dc\\jetified-play-services-base-16.0.1\\res\\values-gl\\values.xml",
+                    "source": "C:\\Users\\KMG\\.gradle\\caches\\transforms-2\\files-2.1\\7f1c05604811b5d8b0b39e85e23d9427\\jetified-play-services-base-17.0.0\\res\\values-gl\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -35,6 +18,23 @@
                         "startOffsets": "2853,2961,3156,3287,3397,3615,3749,3898,4229,4459,4570,4770,4907,5131,5313,5410,5509",
                         "endColumns": "107,194,130,109,217,133,148,137,229,110,199,136,223,181,96,98,113",
                         "endOffsets": "2956,3151,3282,3392,3610,3744,3893,4031,4454,4565,4765,4902,5126,5308,5405,5504,5618"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\KMG\\.gradle\\caches\\transforms-2\\files-2.1\\aa0b0b1b8ee658361451379d95ea2969\\jetified-play-services-basement-17.0.0\\res\\values-gl\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "247",
+                        "endColumns": "192",
+                        "endOffsets": "439"
+                    },
+                    "to": {
+                        "startLines": "37",
+                        "startColumns": "4",
+                        "startOffsets": "4036",
+                        "endColumns": "192",
+                        "endOffsets": "4224"
                     }
                 },
                 {
