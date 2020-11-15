@@ -1,17 +1,19 @@
 package com.kookminuniv.team17.hotplace;
 
+import android.graphics.Bitmap;
+
 public class ImgData {
-    private int img;
+    private Bitmap img;
 
-    public ImgData(int img){
+    public ImgData(Bitmap img){
         this.img = img;
     }
 
-    public void setImg(int img){
+    public void setImg(Bitmap img){
         this.img = img;
     }
 
-    public int getImg(){
+    public Bitmap getImg(){
         return img;
     }
 }
