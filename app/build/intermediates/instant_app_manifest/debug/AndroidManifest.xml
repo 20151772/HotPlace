@@ -11,7 +11,9 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 대략적인 위치정보 서비스 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 자세한 위치정보 서비스 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 인터넷 접속 -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -26,24 +28,34 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.kookminuniv.team17.hotplace.ArticleWriteActivity"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
         <activity
             android:name="com.kookminuniv.team17.hotplace.SignupActivity"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
         <activity
             android:name="com.kookminuniv.team17.hotplace.LoginActivity"
-            android:windowSoftInputMode="adjustPan" >
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name="com.kookminuniv.team17.hotplace.LocationActivity" />
+        <activity android:name="com.kookminuniv.team17.hotplace.ArticleActivity" />
+        <activity android:name="com.kookminuniv.team17.hotplace.LogoActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.kookminuniv.team17.hotplace.LocationActivity" />
-        <activity android:name="com.kookminuniv.team17.hotplace.ArticleActivity" >
-        </activity>
-        <activity android:name="com.kookminuniv.team17.hotplace.LogoActivity" />
         <activity android:name="com.kookminuniv.team17.hotplace.MainActivity" />
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDYpAHMqtis20UImEr4Uw8J9DrFeHBuMC8" />
+
         <activity
             android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
             android:excludeFromRecents="true"
