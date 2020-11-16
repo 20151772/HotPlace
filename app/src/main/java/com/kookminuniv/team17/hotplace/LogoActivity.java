@@ -24,6 +24,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class LogoActivity extends AppCompatActivity {
+
+    private MainBackPressCloseHandler mainBackPressCloseHandler;
     UserInformation user;
 
     ImageView logoImg;
@@ -58,6 +60,7 @@ public class LogoActivity extends AppCompatActivity {
                 finish();
             }
         });
+        mainBackPressCloseHandler = new MainBackPressCloseHandler(this);
     }
 
     private void getPermission() {
@@ -75,5 +78,10 @@ public class LogoActivity extends AppCompatActivity {
         }
         Location userLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         user.setUserLocation(userLocation);
+    }
+
+    @Override
+    public void onBackPressed() {
+        mainBackPressCloseHandler.onBackPressed();
     }
 }

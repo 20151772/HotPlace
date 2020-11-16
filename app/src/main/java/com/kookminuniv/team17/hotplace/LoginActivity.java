@@ -21,6 +21,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Iterator;
 
 public class LoginActivity extends AppCompatActivity {
+
+    private MainBackPressCloseHandler mainBackPressCloseHandler;
     UserInformation user;
 
     EditText userIdText, passwordText, passwordCheckText;
@@ -111,5 +113,11 @@ public class LoginActivity extends AppCompatActivity {
                 });
             }
         });
+        mainBackPressCloseHandler = new MainBackPressCloseHandler(this);
+    }
+
+    @Override
+    public void onBackPressed() {
+        mainBackPressCloseHandler.onBackPressed();
     }
 }
