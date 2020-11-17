@@ -2,6 +2,7 @@
 
 package com.kookminuniv.team17.hotplace;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -29,12 +30,19 @@ public class LocationActivity extends AppCompatActivity implements  OnMapReadyCa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location);
 
+        // 인텐트 받아옴 - 위도, 경도
         Intent intent = getIntent();
         if(intent != null){
             latitude = intent.getDoubleExtra("latitude", 0);
             longitude = intent.getDoubleExtra("longitude", 0);
         }
 
+        // 액션 바
+        final ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("지도");
+        actionBar.setDisplayHomeAsUpEnabled(true);  // 뒤로가기
+
+        // 맵 프래그먼트 실행
         fragment = (MapFragment) getFragmentManager().findFragmentById(R.id.fragment1);
         fragment.getMapAsync(this);
     }
@@ -51,7 +59,6 @@ public class LocationActivity extends AppCompatActivity implements  OnMapReadyCa
         if(check != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
-
         }
         else{
             map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
@@ -69,12 +76,17 @@ public class LocationActivity extends AppCompatActivity implements  OnMapReadyCa
             // 줌 : 1~21 숫자가 클수록 자세한 지도
 
             //맵에 마커 표시
-
             MarkerOptions marker = new MarkerOptions();
             marker.position(geoPoint); // 마커 표시할 좌표
             marker.title("현재 위치"); // 마커의 제목
             marker.snippet("ㅁㄴㅇㄹ"); // 마커의 설명
             map.addMarker(marker); //지도에 마커 추가가
         }
+    }
+
+    // 액션 바 뒤로가기
+    public boolean onSupportNavigateUp(){
+        onBackPressed();
+        return super.onSupportNavigateUp();
     }
 }

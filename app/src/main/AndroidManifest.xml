@@ -16,7 +16,8 @@
             android:windowSoftInputMode="adjustPan">
         </activity>
         <activity android:name=".LoginActivity"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan">
+        </activity>
         <activity android:name=".LocationActivity"></activity>
         <activity android:name=".ArticleActivity"></activity>
         <activity android:name=".LogoActivity">
@@ -26,7 +27,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity">
+        </activity>
 
         <uses-library
             android:name="org.apache.http.legacy"

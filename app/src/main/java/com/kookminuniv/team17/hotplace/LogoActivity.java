@@ -18,13 +18,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class LogoActivity extends AppCompatActivity {
-
     private MainBackPressCloseHandler mainBackPressCloseHandler;
     UserInformation user;
 
@@ -39,6 +39,7 @@ public class LogoActivity extends AppCompatActivity {
         tmp = (TextView) findViewById(R.id.logoText);
         logoImg = (ImageView) findViewById(R.id.logoImage);
 
+        // 임시로 기다림
         try {
             user = new UserInformation();
             Thread.sleep(2000);
@@ -46,23 +47,31 @@ public class LogoActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        // 위치 권한을 받아옴
         getPermission();
 
         Toast.makeText(this, "로고를 클릭해주세요.", Toast.LENGTH_LONG).show();
 
+        // 로고 이미지 클릭
         logoImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // 현재 위치를 받아옴
                 getLocation();
+
+                // 인텐트 보냄 - user(location)
                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 intent.putExtra("UserObject", user);
                 startActivity(intent);
                 finish();
             }
         });
+
+        // 뒤로 가기 버튼
         mainBackPressCloseHandler = new MainBackPressCloseHandler(this);
     }
 
+    // 위치 권한 받아옴
     private void getPermission() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{
@@ -70,6 +79,7 @@ public class LogoActivity extends AppCompatActivity {
         }
     }
 
+    // 현재 위치 받아옴
     private void getLocation() {
         final LocationManager locationManager = (LocationManager) getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -80,6 +90,7 @@ public class LogoActivity extends AppCompatActivity {
         user.setUserLocation(userLocation);
     }
 
+    // 뒤로가기
     @Override
     public void onBackPressed() {
         mainBackPressCloseHandler.onBackPressed();

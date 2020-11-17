@@ -39,7 +39,8 @@
         </activity>
         <activity
             android:name="com.kookminuniv.team17.hotplace.LoginActivity"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
         <activity android:name="com.kookminuniv.team17.hotplace.LocationActivity" />
         <activity android:name="com.kookminuniv.team17.hotplace.ArticleActivity" />
         <activity android:name="com.kookminuniv.team17.hotplace.LogoActivity" >
@@ -49,7 +50,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.kookminuniv.team17.hotplace.MainActivity" />
+        <activity android:name="com.kookminuniv.team17.hotplace.MainActivity" >
+        </activity>
 
         <uses-library
             android:name="org.apache.http.legacy"

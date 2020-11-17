@@ -132,7 +132,9 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:layout_span="2"
-                android:text="회원가입" />
+                android:text="회원가입"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
         </TableRow>
     </TableLayout>

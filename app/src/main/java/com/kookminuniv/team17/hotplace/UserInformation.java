@@ -6,10 +6,15 @@ import android.location.Location;
 import java.io.Serializable;
 
 public class UserInformation implements Serializable {
-    private static String user_id;
+    private static String user_id, address;
     private static Location userLocation;
     private static boolean login;
 
+
+
+    public static void setAddress(String address) {
+        UserInformation.address = address;
+    }
     public void setUser_id(String user_id){
         this.user_id = user_id;
     }
@@ -20,6 +25,9 @@ public class UserInformation implements Serializable {
         this.login = login;
     }
 
+    public static String getAddress() {
+        return address;
+    }
     public String getUser_id(){
         return user_id;
     }

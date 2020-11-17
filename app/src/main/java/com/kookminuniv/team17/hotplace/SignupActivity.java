@@ -18,6 +18,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Iterator;
 
 public class SignupActivity extends AppCompatActivity {
@@ -73,8 +75,14 @@ public class SignupActivity extends AppCompatActivity {
                                     return;
                                 }
                             }
+                            long now = System.currentTimeMillis();
+                            Date date = new Date(now);
+                            SimpleDateFormat sdfNow = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+                            String formatDate = sdfNow.format(date);
+
                             dbRef.child(user_id).child("user_id").setValue(user_id);
                             dbRef.child(user_id).child("password").setValue(password);
+                            dbRef.child(user_id).child("signup_date").setValue(formatDate);
                             Toast.makeText(SignupActivity.this, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();
                             onBackPressed();
                         }

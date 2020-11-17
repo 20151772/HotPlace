@@ -1343,6 +1343,7 @@ id action_text
 id actions
 id activity_chooser_view_content
 id add
+id addressText
 id adjust_height
 id adjust_width
 id alertTitle
@@ -1366,6 +1367,7 @@ id beginning
 id blocking
 id bottom
 id bounce
+id btn
 id buttonPanel
 id cache_measures
 id center
@@ -1393,6 +1395,7 @@ id decelerate
 id decelerateAndComplete
 id decor_content_parent
 id default_activity_button
+id deleteBtn
 id deltaRelative
 id dependency_ordering
 id design_bottom_sheet
@@ -1415,6 +1418,7 @@ id dragUp
 id easeIn
 id easeInOut
 id easeOut
+id editBtn
 id edit_query
 id end
 id enterAlways
@@ -1611,6 +1615,8 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
+id tv
+id tv2
 id unchecked
 id uniform
 id unlabeled

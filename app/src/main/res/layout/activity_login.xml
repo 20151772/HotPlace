@@ -94,7 +94,9 @@
                 android:layout_marginLeft="75dp"
                 android:layout_marginRight="75dp"
                 android:layout_span="2"
-                android:text="로그인" />
+                android:text="로그인"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
         </TableRow>
 
@@ -118,7 +120,9 @@
                 android:layout_marginLeft="75dp"
                 android:layout_marginRight="75dp"
                 android:layout_span="2"
-                android:text="회원가입" />
+                android:text="회원가입"
+                android:textSize="18sp"
+                android:textStyle="bold" />
         </TableRow>
     </TableLayout>
 
