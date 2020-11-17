@@ -1,16 +1,16 @@
 // LoginActivity: 로그인 기능
 package com.kookminuniv.team17.hotplace;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -89,7 +89,7 @@ public class LoginActivity extends AppCompatActivity {
                                     user.setUser_id(user_id);
                                     user.setLogin(true);
 
-                                    Intent intent = new Intent(getApplicationContext(), ArticleWriteActivity.class);
+                                    Intent intent = new Intent(getApplicationContext(), ListViewActivity.class);
                                     intent.putExtra("UserObject", user);
 
                                     Toast.makeText(getApplicationContext(), "로그인 되었습니다.", Toast.LENGTH_SHORT).show();

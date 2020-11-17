@@ -19,6 +19,7 @@
             android:windowSoftInputMode="adjustPan"></activity>
         <activity android:name=".LocationActivity"></activity>
         <activity android:name=".ArticleActivity"></activity>
+        <activity android:name=".ListViewActivity"></activity>
         <activity android:name=".LogoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

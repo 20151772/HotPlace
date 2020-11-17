@@ -1222,6 +1222,9 @@ drawable abc_vector_test
 drawable android
 drawable avd_hide_password
 drawable avd_show_password
+drawable baseline_account_box_black_36dp
+drawable baseline_account_circle_black_36dp
+drawable baseline_assignment_ind_black_36dp
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -1282,6 +1285,7 @@ drawable tooltip_frame_light
 id ALT
 id CTRL
 id FUNCTION
+id Home_btn
 id META
 id NO_DEBUG
 id SHIFT
@@ -1452,6 +1456,7 @@ id ignoreRequest
 id image
 id imageBtn
 id imageView
+id imageView1
 id info
 id invisible
 id italic
@@ -1467,6 +1472,7 @@ id line1
 id line3
 id linear
 id listMode
+id listView
 id list_item
 id locationBtn
 id loginBtn
@@ -1480,6 +1486,7 @@ id motion_base
 id mtrl_child_content_container
 id mtrl_internal_children_alpha_tag
 id multiply
+id myPage_btn
 id navigation_header_container
 id never
 id noimgText
@@ -1690,6 +1697,8 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_article
 layout activity_article_write
+layout activity_inlist
+layout activity_list
 layout activity_location
 layout activity_login
 layout activity_logo
