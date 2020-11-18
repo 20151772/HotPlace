@@ -6,10 +6,13 @@ import android.location.Location;
 import java.io.Serializable;
 
 public class UserInformation implements Serializable {
-    private static String user_id;
+    private static String user_id, address, goo;
     private static Location userLocation;
     private static boolean login;
 
+    public void setAddress(String address) {
+        this.address = address;
+    }
     public void setUser_id(String user_id){
         this.user_id = user_id;
     }
@@ -19,14 +22,23 @@ public class UserInformation implements Serializable {
     public void setLogin(boolean login){
         this.login = login;
     }
+    public void setGoo(String goo) {
+        this.goo = goo;
+    }
 
-    public String getUser_id(){
+    public static String getAddress() {
+        return address;
+    }
+    public static String getUser_id(){
         return user_id;
     }
-    public Location getUserLocation(){
+    public static Location getUserLocation(){
         return userLocation;
     }
-    public boolean isLogin(){
+    public static boolean isLogin(){
         return login;
+    }
+    public static String getGoo() {
+        return goo;
     }
 }

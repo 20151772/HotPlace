@@ -12,7 +12,7 @@ public class PhotoViewHolder extends RecyclerView.ViewHolder {
 
     public PhotoViewHolder(View itemView){
         super(itemView);
-        imageView = itemView.findViewById(R.id.imageView);
+        imageView = itemView.findViewById(R.id.iv);
     }
     public void onBind(ImgData data){
         this.data = data;

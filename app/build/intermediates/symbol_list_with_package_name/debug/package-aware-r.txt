@@ -1343,6 +1343,7 @@ id action_text
 id actions
 id activity_chooser_view_content
 id add
+id addressText
 id adjust_height
 id adjust_width
 id alertTitle
@@ -1386,6 +1387,7 @@ id contentPanel
 id contentsText
 id coordinator
 id cos
+id createBtn
 id custom
 id customPanel
 id dark
@@ -1393,6 +1395,7 @@ id decelerate
 id decelerateAndComplete
 id decor_content_parent
 id default_activity_button
+id deleteBtn
 id deltaRelative
 id dependency_ordering
 id design_bottom_sheet
@@ -1415,6 +1418,7 @@ id dragUp
 id easeIn
 id easeInOut
 id easeOut
+id editBtn
 id edit_query
 id end
 id enterAlways
@@ -1451,11 +1455,12 @@ id ignore
 id ignoreRequest
 id image
 id imageBtn
-id imageView
+id imageView1
 id info
 id invisible
 id italic
 id item_touch_helper_previous_elevation
+id iv
 id jumpToEnd
 id jumpToStart
 id labeled
@@ -1467,11 +1472,14 @@ id line1
 id line3
 id linear
 id listMode
+id listView
 id list_item
 id locationBtn
+id locationText
 id loginBtn
 id logoImage
 id logoText
+id mainPage_btn
 id masked
 id message
 id middle
@@ -1480,6 +1488,7 @@ id motion_base
 id mtrl_child_content_container
 id mtrl_internal_children_alpha_tag
 id multiply
+id mypageBtn
 id navigation_header_container
 id never
 id noimgText
@@ -1510,6 +1519,7 @@ id progress_horizontal
 id radio
 id ratio
 id rectangles
+id refreshBtn
 id reverseSawtooth
 id right
 id right_icon
@@ -1578,6 +1588,7 @@ id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
 id terrain
 id text
+id text1
 id text2
 id textSpacerNoButtons
 id textSpacerNoTitle
@@ -1690,10 +1701,12 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_article
 layout activity_article_write
+layout activity_inlist
 layout activity_location
 layout activity_login
 layout activity_logo
 layout activity_main
+layout activity_mypage
 layout activity_signup
 layout custom_dialog
 layout design_bottom_navigation_item
