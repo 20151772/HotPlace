@@ -43,6 +43,8 @@
             android:windowSoftInputMode="adjustPan" />
         <activity android:name="com.kookminuniv.team17.hotplace.LocationActivity" />
         <activity android:name="com.kookminuniv.team17.hotplace.ArticleActivity" />
+        <activity android:name="com.kookminuniv.team17.hotplace.ListViewActivity" />
+        <activity android:name="com.kookminuniv.team17.hotplace.myPage" />
         <activity android:name="com.kookminuniv.team17.hotplace.LogoActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

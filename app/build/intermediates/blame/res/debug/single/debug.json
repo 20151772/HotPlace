@@ -32,6 +32,10 @@
         "source": "C:\\Users\\kdhkd\\AndroidStudioProjects\\HotPlace\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
     },
     {
+        "merged": "C:\\Users\\kdhkd\\AndroidStudioProjects\\HotPlace\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_mypage.xml.flat",
+        "source": "C:\\Users\\kdhkd\\AndroidStudioProjects\\HotPlace\\app\\src\\main\\res\\layout\\activity_mypage.xml"
+    },
+    {
         "merged": "C:\\Users\\kdhkd\\AndroidStudioProjects\\HotPlace\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
         "source": "C:\\Users\\kdhkd\\AndroidStudioProjects\\HotPlace\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
