@@ -1,4 +1,5 @@
 // LogoActivity: 시작 전 화면으로 몇초간 로고화면을 보여주고, 위치 정보 권한을 받지 않았다면 받아옴
+// 컬러 : 연빨 #E85F5D, 빨 #E53C39, 진빨 #B22C2B
 
 package com.kookminuniv.team17.hotplace;
 

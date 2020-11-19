@@ -215,10 +215,16 @@ public class ArticleActivity extends AppCompatActivity {
                         imageDREf.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                for(int i=0; i<imageCount; i++){
-                                    String imageName = dataSnapshot.child(Integer.toString(i)).getValue(String.class);
-                                    ImgData item = new ImgData(imageName);
+                                if (imageCount == 0) {
+                                    ImgData item = new ImgData("None");
                                     items.add(item);
+                                }
+                                else {
+                                    for (int i = 0; i < imageCount; i++) {
+                                        String imageName = dataSnapshot.child(Integer.toString(i)).getValue(String.class);
+                                        ImgData item = new ImgData(imageName);
+                                        items.add(item);
+                                    }
                                 }
                                 PhotoAdapter adapter = new PhotoAdapter(items);
                                 vp2.setAdapter(adapter);

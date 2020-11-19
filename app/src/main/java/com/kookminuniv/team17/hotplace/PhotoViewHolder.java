@@ -28,8 +28,7 @@ public class PhotoViewHolder extends RecyclerView.ViewHolder {
         this.data = data;
         final Context context2 = context;
 
-        if(data.getImg() == "None"){
-            Log.d("asdf", "None");
+        if(data.getImg().equals("None")){
             imageView.setImageResource(R.drawable.android);
         }
         else{
