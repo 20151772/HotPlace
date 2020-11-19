@@ -222,6 +222,7 @@ public class ArticleActivity extends AppCompatActivity {
                                 else {
                                     for (int i = 0; i < imageCount; i++) {
                                         String imageName = dataSnapshot.child(Integer.toString(i)).getValue(String.class);
+                                        imageNames.add(imageName);
                                         ImgData item = new ImgData(imageName);
                                         items.add(item);
                                     }
