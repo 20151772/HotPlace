@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -23,10 +24,10 @@ import java.util.ArrayList;
 
 public class CustomListAdapter extends BaseAdapter {
 
-    private ArrayList<ListData> listViewData = new ArrayList<ListData>();
+    private ArrayList<ListData> listViewData;
 
-    public CustomListAdapter(){
-
+    public CustomListAdapter(ArrayList<ListData> items){
+        listViewData = items;
     }
 
     @Override
@@ -45,28 +46,29 @@ public class CustomListAdapter extends BaseAdapter {
         }
 
         final ImageView imageView = (ImageView) convertView.findViewById(R.id.imageView1) ;
-        TextView titleTextView = (TextView) convertView.findViewById(R.id.textView1) ;
-        TextView descTextView = (TextView) convertView.findViewById(R.id.textView2) ;
+        TextView articleNumberTextView = (TextView) convertView.findViewById(R.id.textView1) ;
+        TextView titleTextView = (TextView) convertView.findViewById(R.id.textView2) ;
 
         ListData listData = listViewData.get(position);
-
-        Log.d("asdf", "1");
-
-        StorageReference imageSRef = FirebaseStorage.getInstance().getReference().child(listData.getImageName());
-        imageSRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
-            @Override
-            public void onComplete(@NonNull Task<Uri> task) {
-                if(task.isSuccessful()){
-                    Log.d("asdf", "2");
-                    Glide.with(context)
-                            .load(task.getResult())
-                            .into(imageView);
+        if(listData.getImageName().equals("None")){
+            imageView.setImageResource(R.drawable.android);
+        }
+        else {
+            StorageReference imageSRef = FirebaseStorage.getInstance().getReference().child(listData.getImageName());
+            imageSRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                @Override
+                public void onComplete(@NonNull Task<Uri> task) {
+                    if (task.isSuccessful()) {
+                        Glide.with(context)
+                                .load(task.getResult())
+                                .into(imageView);
+                    }
                 }
-            }
-        });
+            });
+        }
 
+        articleNumberTextView.setText(listData.getArticleNumber());
         titleTextView.setText(listData.getTitle());
-        descTextView.setText(listData.getDesc());
 
         return convertView;
     }
@@ -79,15 +81,5 @@ public class CustomListAdapter extends BaseAdapter {
     @Override
     public Object getItem(int position) {
         return listViewData.get(position);
-    }
-
-    public void addItem(String imageName, String title, String desc){
-        ListData item = new ListData();
-
-        item.setImageName(imageName);
-        item.setTitle(title);
-        item.setDesc(desc);
-
-        listViewData.add(item);
     }
 }

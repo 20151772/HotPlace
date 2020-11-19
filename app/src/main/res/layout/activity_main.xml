@@ -14,48 +14,89 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-            <ListView
-                android:id="@+id/listView"
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_marginTop="10dp">
+
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/refresh_layout"
                 android:layout_width="match_parent"
-                android:layout_height="200dp" >
-            </ListView>
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:orientation="horizontal"
-            android:paddingRight="50dp">
+                <ListView
+                    android:id="@+id/listView"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp">
 
-            <ImageButton
-                android:id="@+id/createBtn"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="#00FFFFFF"
-                android:scaleType="fitCenter"
-                app:srcCompat="@android:drawable/ic_menu_add" />
+                </ListView>
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-            <ImageButton
-                android:id="@+id/refreshBtn"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="#00FFFFFF"
-                android:scaleType="fitCenter"
-                app:srcCompat="@android:drawable/ic_menu_rotate" />
-        </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="325dp"
+                android:layout_marginTop="250dp"
+                android:gravity="right"
+                android:orientation="vertical">
 
-        <Button
-            android:id="@+id/mypageBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="마이페이지" />
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fabAllBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:clickable="true"
+                    android:src="?android:attr/actionModeWebSearchDrawable"
+                    android:visibility="invisible"
+                    app:backgroundTint="#E85F5D" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fabMyPageBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:clickable="true"
+                    android:src="@drawable/round_account_circle_black_18dp"
+                    android:visibility="invisible"
+                    app:backgroundTint="#E85F5D" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fabCreateBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:clickable="true"
+                    android:src="@drawable/round_create_black_18dp"
+                    android:visibility="invisible"
+                    app:backgroundTint="#E85F5D" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:clickable="true"
+                    app:backgroundTint="#E53C39"
+                    app:srcCompat="@drawable/round_add_black_18dp" />
+
+            </LinearLayout>
+
+        </FrameLayout>
 
         <TextView
             android:id="@+id/locationText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="현재 주소"
             android:textAlignment="center"
+            android:textColor="#E85F5D"
             android:textSize="24sp" />
 
     </LinearLayout>

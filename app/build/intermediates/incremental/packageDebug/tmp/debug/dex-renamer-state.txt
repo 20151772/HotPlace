@@ -1,4 +1,4 @@
-#Thu Nov 19 00:56:42 KST 2020
+#Thu Nov 19 15:30:53 KST 2020
 base.0=D\:\\Workspace\\test\\HotPlace2\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 path.1=classes.dex
 renamed.1=classes2.dex

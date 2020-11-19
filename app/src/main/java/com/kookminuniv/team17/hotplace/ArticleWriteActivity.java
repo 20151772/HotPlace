@@ -134,7 +134,7 @@ public class ArticleWriteActivity extends AppCompatActivity {
                     imageView.setImageURI(filePath.get(0));
                 }
 
-                imageView.setImageURI(singlePath);  // 화면에 실제로 표시되는건 첫번째 이미지만
+                imageView.setImageURI(clipData.getItemAt(0).getUri());  // 화면에 실제로 표시되는건 첫번째 이미지만
             }
         }
     }
@@ -172,7 +172,7 @@ public class ArticleWriteActivity extends AppCompatActivity {
 
                     // 스토리지에 저장하는 것을 기다림 - 바로 화면 전환을 하면 저장하기도 전에 로딩되서 에러 발생
                     try {
-                        Thread.sleep(1000);
+                        Thread.sleep(3000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -209,6 +209,8 @@ public class ArticleWriteActivity extends AppCompatActivity {
         dbRef.child(strAC).child("title").setValue(title);  // 글 제목
         dbRef.child(strAC).child("contents").setValue(contents);  // 글 내용
         dbRef.child(strAC).child("user_id").setValue(user.getUser_id());  // 글쓴이
+        //dbRef.child(strAC).child("location_Latitude").setValue(37.612124);  // 위도
+        //dbRef.child(strAC).child("location_Longitude").setValue(126.997682);  // 경도
         dbRef.child(strAC).child("location_Latitude").setValue(currentLocation.getLatitude());  // 위도
         dbRef.child(strAC).child("location_Longitude").setValue(currentLocation.getLongitude());  // 경도
         dbRef.child(strAC).child("address").setValue(address);  // 주소
@@ -268,6 +270,9 @@ public class ArticleWriteActivity extends AppCompatActivity {
         List<Address> list = null;
         try {
             list = gc.getFromLocation(loc.getLatitude(), loc.getLongitude(), 1);
+            //list = gc.getFromLocation(37.612124, 126.997682, 1);  // 국민대
+            //list = gc.getFromLocation(37.603430, 127.025005, 1);  // 길음역
+            //list = gc.getFromLocation(37.576192, 126.973469, 1);  // 경복궁
         } catch (IOException e) {
             e.printStackTrace();
         }

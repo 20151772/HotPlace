@@ -2,6 +2,7 @@
 
 package com.kookminuniv.team17.hotplace;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -34,6 +35,11 @@ public class LocationActivity extends AppCompatActivity implements  OnMapReadyCa
             latitude = intent.getDoubleExtra("latitude", 0);
             longitude = intent.getDoubleExtra("longitude", 0);
         }
+
+        // 액션 바
+        final ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("메인");
+        actionBar.setDisplayHomeAsUpEnabled(true);  // 뒤로가기
 
         fragment = (MapFragment) getFragmentManager().findFragmentById(R.id.fragment1);
         fragment.getMapAsync(this);
@@ -76,5 +82,11 @@ public class LocationActivity extends AppCompatActivity implements  OnMapReadyCa
             marker.snippet("ㅁㄴㅇㄹ"); // 마커의 설명
             map.addMarker(marker); //지도에 마커 추가가
         }
+    }
+
+    // 액션 바 뒤로가기
+    public boolean onSupportNavigateUp(){
+        onBackPressed();
+        return super.onSupportNavigateUp();
     }
 }

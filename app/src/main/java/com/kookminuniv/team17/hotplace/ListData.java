@@ -2,26 +2,32 @@ package com.kookminuniv.team17.hotplace;
 
 public class ListData {
     private String imageName;
-    private String titleStr;
-    private String descStr;
+    private String articleNumber;
+    private String title;
+
+    public ListData(String imageName, String articleNumber, String title){
+        this.imageName = imageName;
+        this.articleNumber = articleNumber;
+        this.title = title;
+    }
 
     public void setImageName(String imageName){
         this.imageName = imageName;
     }
-    public void setTitle(String title){
-        titleStr = title;
+    public void setArticleNumbertArticle(String title){
+        articleNumber = title;
     }
-    public void setDesc(String desc){
-        descStr = desc;
+    public void setTitle(String desc){
+        title = desc;
     }
 
     public String getImageName(){
         return this.imageName;
     }
-    public String getTitle(){
-        return this.titleStr;
+    public String getArticleNumber(){
+        return this.articleNumber;
     }
-    public String getDesc(){
-        return this.descStr;
+    public String getTitle(){
+        return this.title;
     }
 }

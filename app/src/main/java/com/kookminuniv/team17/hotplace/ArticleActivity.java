@@ -168,24 +168,15 @@ public class ArticleActivity extends AppCompatActivity {
                         articleRef.child("articles_count").setValue(articles_count-1);  // 갯수 하나 감소
                         // 이미지가 있다면 스토리지에 접근해서 삭제
                         for(int i=0; i<imageCount; i++){
-                            String strI = Integer.toString(i);
-                            DatabaseReference imageDRef = articleRef.child(article_id).child("image_names").child(strI);
-
-                            imageDRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                    String deleteImgPath = dataSnapshot.getValue(String.class);
-                                    FirebaseUser fbuser = mAuth.getCurrentUser();
-                                    if(fbuser != null) {
-                                        // 스토리지 접근
-                                        storageRef.child(deleteImgPath).delete();
-                                    } else{
-                                        signInAnonymously();
-                                    }
-                                }
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError databaseError) { }
-                            });
+                            //String strI = Integer.toString(i);
+                            String deleteImgPath = imageNames.get(i);
+                            FirebaseUser fbuser = mAuth.getCurrentUser();
+                            if(fbuser != null){
+                                storageRef.child(deleteImgPath).delete();
+                            }
+                            else{
+                                signInAnonymously();
+                            }
                         }
 
                         // DB article 삭제
@@ -195,7 +186,7 @@ public class ArticleActivity extends AppCompatActivity {
                     public void onCancelled(@NonNull DatabaseError databaseError) { }
                 });
 
-
+                Toast.makeText(getApplicationContext(), "해당 글이 삭제되었습니다.", Toast.LENGTH_SHORT).show();
 
                 cc.clearCache(ArticleActivity.this);
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -258,7 +249,6 @@ public class ArticleActivity extends AppCompatActivity {
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                     // 이미지 이름 가져와서 저장
                                     String tmp = dataSnapshot.getValue(String.class);
-                                    Log.d("uploadyImagePath", tmp);
                                     imageNames.add(finalI, tmp);
 
                                     // 스토리지 접근 전 singin

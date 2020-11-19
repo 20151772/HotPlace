@@ -3,6 +3,7 @@
 package com.kookminuniv.team17.hotplace;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -26,7 +27,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.LatLng;
+
 import java.io.IOException;
+import java.time.LocalTime;
 import java.util.List;
 
 public class LogoActivity extends AppCompatActivity {
@@ -40,6 +45,9 @@ public class LogoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logo);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         tmp = (TextView) findViewById(R.id.logoText);
         logoImg = (ImageView) findViewById(R.id.logoImage);
@@ -92,7 +100,20 @@ public class LogoActivity extends AppCompatActivity {
             finish();
         }
         Location userLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        user.setUserLocation(userLocation);
+
+        if(userLocation == null){
+            Log.d("asdf", "gps failed");
+            Location networkLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+            if(networkLocation == null){
+                Log.d("asdf", "network failed");
+            }
+            else{
+                user.setUserLocation(networkLocation);
+            }
+        }
+        else{
+            user.setUserLocation(userLocation);
+        }
 
         // 로케이션 -> 주소
         Geocoder gc = new Geocoder(this);
@@ -100,6 +121,9 @@ public class LogoActivity extends AppCompatActivity {
         try {
             // user location의 위도 경도를 가져와 주소 정보로 변환
             list = gc.getFromLocation(user.getUserLocation().getLatitude(), user.getUserLocation().getLongitude(), 1);
+            //list = gc.getFromLocation(37.612124, 126.997682, 1);
+            //list = gc.getFromLocation(37.603430, 127.025005, 1);
+            //list = gc.getFromLocation(37.576192, 126.973469, 1);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -115,10 +139,6 @@ public class LogoActivity extends AppCompatActivity {
         String[] parsedAddress = user.getAddress().split(" ");
         String currentGoo = parsedAddress[2];
         user.setGoo(currentGoo);
-
-        // 임시
-        //user.setAddress("대한민국 서울특별시 성북구 정릉동 정릉로 77");
-        //user.setGoo("성북구");
     }
 
     // 뒤로가기

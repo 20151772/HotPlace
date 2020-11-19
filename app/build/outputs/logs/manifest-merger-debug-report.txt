@@ -12,6 +12,7 @@ MERGED from [com.google.firebase:firebase-database:16.0.4] C:\Users\KMG\.gradle\
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\KMG\.gradle\caches\transforms-2\files-2.1\0caaf3ad8d375379d8fac9161788791f\jetified-viewpager2-1.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.gridlayout:gridlayout:1.0.0] C:\Users\KMG\.gradle\caches\transforms-2\files-2.1\9a33d72ea07c89bb0963953e126fafa9\gridlayout-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\KMG\.gradle\caches\transforms-2\files-2.1\5870076e9aa8ff3c9d23d6b9ac77a811\legacy-support-core-ui-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\KMG\.gradle\caches\transforms-2\files-2.1\3308a5329d00e11d0407a84601476f2a\swiperefreshlayout-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\KMG\.gradle\caches\transforms-2\files-2.1\86a6e4f05f7b51af1f6020018299810c\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.appcompat:appcompat-resources:1.2.0] C:\Users\KMG\.gradle\caches\transforms-2\files-2.1\e383ad7c357758893cce8d4152901254\jetified-appcompat-resources-1.2.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\KMG\.gradle\caches\transforms-2\files-2.1\1168a7369564dc13aec39d2ab8d0ad2c\drawerlayout-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -37,7 +38,6 @@ MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\KMG\.gradle\caches\tra
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] C:\Users\KMG\.gradle\caches\transforms-2\files-2.1\9db48372ae0279d46c54c49faeb9dab0\coordinatorlayout-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\KMG\.gradle\caches\transforms-2\files-2.1\a40e04a269ab105530093ddb83342647\slidingpanelayout-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.customview:customview:1.0.0] C:\Users\KMG\.gradle\caches\transforms-2\files-2.1\8962a7fad75af76fa19ac566a9201f54\customview-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\KMG\.gradle\caches\transforms-2\files-2.1\3308a5329d00e11d0407a84601476f2a\swiperefreshlayout-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\KMG\.gradle\caches\transforms-2\files-2.1\d586808efe89a44eed6683c071a09d6f\asynclayoutinflater-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\KMG\.gradle\caches\transforms-2\files-2.1\01c01085d733a50741d8635da9e2ee1f\loader-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.activity:activity:1.1.0] C:\Users\KMG\.gradle\caches\transforms-2\files-2.1\9fb210019d21fb393515e592e75cd8c5\jetified-activity-1.1.0\AndroidManifest.xml:17:1-24:12
@@ -234,6 +234,8 @@ MERGED from [androidx.gridlayout:gridlayout:1.0.0] C:\Users\KMG\.gradle\caches\t
 MERGED from [androidx.gridlayout:gridlayout:1.0.0] C:\Users\KMG\.gradle\caches\transforms-2\files-2.1\9a33d72ea07c89bb0963953e126fafa9\gridlayout-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\KMG\.gradle\caches\transforms-2\files-2.1\5870076e9aa8ff3c9d23d6b9ac77a811\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\KMG\.gradle\caches\transforms-2\files-2.1\5870076e9aa8ff3c9d23d6b9ac77a811\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\KMG\.gradle\caches\transforms-2\files-2.1\3308a5329d00e11d0407a84601476f2a\swiperefreshlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\KMG\.gradle\caches\transforms-2\files-2.1\3308a5329d00e11d0407a84601476f2a\swiperefreshlayout-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\KMG\.gradle\caches\transforms-2\files-2.1\86a6e4f05f7b51af1f6020018299810c\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\KMG\.gradle\caches\transforms-2\files-2.1\86a6e4f05f7b51af1f6020018299810c\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.appcompat:appcompat-resources:1.2.0] C:\Users\KMG\.gradle\caches\transforms-2\files-2.1\e383ad7c357758893cce8d4152901254\jetified-appcompat-resources-1.2.0\AndroidManifest.xml:20:5-22:41
@@ -284,8 +286,6 @@ MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\KMG\.g
 MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\KMG\.gradle\caches\transforms-2\files-2.1\a40e04a269ab105530093ddb83342647\slidingpanelayout-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.customview:customview:1.0.0] C:\Users\KMG\.gradle\caches\transforms-2\files-2.1\8962a7fad75af76fa19ac566a9201f54\customview-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.customview:customview:1.0.0] C:\Users\KMG\.gradle\caches\transforms-2\files-2.1\8962a7fad75af76fa19ac566a9201f54\customview-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\KMG\.gradle\caches\transforms-2\files-2.1\3308a5329d00e11d0407a84601476f2a\swiperefreshlayout-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\KMG\.gradle\caches\transforms-2\files-2.1\3308a5329d00e11d0407a84601476f2a\swiperefreshlayout-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\KMG\.gradle\caches\transforms-2\files-2.1\d586808efe89a44eed6683c071a09d6f\asynclayoutinflater-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\KMG\.gradle\caches\transforms-2\files-2.1\d586808efe89a44eed6683c071a09d6f\asynclayoutinflater-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\KMG\.gradle\caches\transforms-2\files-2.1\01c01085d733a50741d8635da9e2ee1f\loader-1.0.0\AndroidManifest.xml:20:5-44

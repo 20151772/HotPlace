@@ -27,6 +27,8 @@ anim design_bottom_sheet_slide_in
 anim design_bottom_sheet_slide_out
 anim design_snackbar_in
 anim design_snackbar_out
+anim fab_close
+anim fab_open
 anim fragment_close_enter
 anim fragment_close_exit
 anim fragment_fade_enter
@@ -1257,8 +1259,10 @@ drawable design_password_eye
 drawable design_snackbar_background
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
+drawable hotplace_logo
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable ic_logo_background
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
@@ -1277,6 +1281,10 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable round_account_circle_black_18dp
+drawable round_add_black_18dp
+drawable round_clear_black_18dp
+drawable round_create_black_18dp
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 id ALT
@@ -1387,10 +1395,10 @@ id contentPanel
 id contentsText
 id coordinator
 id cos
-id createBtn
 id custom
 id customPanel
 id dark
+id dateText
 id decelerate
 id decelerateAndComplete
 id decor_content_parent
@@ -1426,6 +1434,10 @@ id enterAlwaysCollapsed
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
+id fab
+id fabAllBtn
+id fabCreateBtn
+id fabMyPageBtn
 id fill
 id fill_horizontal
 id fill_vertical
@@ -1471,6 +1483,7 @@ id light
 id line1
 id line3
 id linear
+id listLayout
 id listMode
 id listView
 id list_item
@@ -1479,7 +1492,6 @@ id locationText
 id loginBtn
 id logoImage
 id logoText
-id mainPage_btn
 id masked
 id message
 id middle
@@ -1488,7 +1500,6 @@ id motion_base
 id mtrl_child_content_container
 id mtrl_internal_children_alpha_tag
 id multiply
-id mypageBtn
 id navigation_header_container
 id never
 id noimgText
@@ -1519,7 +1530,7 @@ id progress_horizontal
 id radio
 id ratio
 id rectangles
-id refreshBtn
+id refresh_layout
 id reverseSawtooth
 id right
 id right_icon
@@ -1588,13 +1599,14 @@ id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
 id terrain
 id text
-id text1
 id text2
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textView
 id textView1
+id textView10
+id textView11
 id textView2
 id textView3
 id textView4
@@ -1739,6 +1751,9 @@ layout support_simple_spinner_dropdown_item
 menu article_write_menu
 mipmap ic_launcher
 mipmap ic_launcher_round
+mipmap ic_logo
+mipmap ic_logo_foreground
+mipmap ic_logo_round
 string abc_action_bar_home_description
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description
