@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
         // 액션 바
         final ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("메인");
+        actionBar.setTitle("메인 - 지역 검색");
         actionBar.setDisplayHomeAsUpEnabled(true);  // 뒤로가기
 
         // 캐쉬 클리어
@@ -121,11 +121,13 @@ public class MainActivity extends AppCompatActivity {
                 if(!isAll){
                     isAll = true;
                     getList("all");
+                    actionBar.setTitle("메인 - 전체 검색");
                     Toast.makeText(getApplicationContext(), "전체 글을 검색합니다.", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     isAll = false;
                     getList("goo");
+                    actionBar.setTitle("메인 - 지역 검색");
                     Toast.makeText(getApplicationContext(), "주변 글을 검색합니다.", Toast.LENGTH_SHORT).show();
                 }
             }

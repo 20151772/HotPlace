@@ -41,7 +41,7 @@ public class MypageActivity extends AppCompatActivity {
 
         // 액션 바
         final ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("메인");
+        actionBar.setTitle("마이페이지");
         actionBar.setDisplayHomeAsUpEnabled(true);  // 뒤로가기
 
         useridText = (TextView) findViewById(R.id.userIdText);

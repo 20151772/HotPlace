@@ -38,7 +38,7 @@ public class LocationActivity extends AppCompatActivity implements  OnMapReadyCa
 
         // 액션 바
         final ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("메인");
+        actionBar.setTitle("지도");
         actionBar.setDisplayHomeAsUpEnabled(true);  // 뒤로가기
 
         fragment = (MapFragment) getFragmentManager().findFragmentById(R.id.fragment1);

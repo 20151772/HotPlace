@@ -2,6 +2,7 @@ package com.kookminuniv.team17.hotplace;
 
 import android.content.Context;
 import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 
 public class PhotoAdapter extends RecyclerView.Adapter<PhotoViewHolder> {
     private ArrayList<ImgData> mItems;
+    private Context context;
 
     public PhotoAdapter(ArrayList<ImgData> data) {
         this.mItems = data;
@@ -20,7 +22,7 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoViewHolder> {
 
     @Override
     public PhotoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Context context = parent.getContext();
+        context = parent.getContext();
         View view = LayoutInflater.from(context).inflate(R.layout.item_viewpager, parent, false);
 
         return new PhotoViewHolder(view);
@@ -30,7 +32,8 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoViewHolder> {
     public void onBindViewHolder(PhotoViewHolder holder, int position) {
         if(holder instanceof PhotoViewHolder){
             PhotoViewHolder pvHolder = (PhotoViewHolder) holder;
-            pvHolder.onBind(mItems.get(position));
+            pvHolder.onBind(mItems.get(position), context);
+            Log.d("asdf", "onbindviewholder");
         }
     }
 
