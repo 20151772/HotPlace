@@ -1,3 +1,7 @@
+// PhotoAdapter
+// 기능 : 뷰페이져2 어뎁터
+// 개발 : 김명호
+
 package com.kookminuniv.team17.hotplace;
 
 import android.content.Context;
@@ -32,7 +36,7 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoViewHolder> {
     public void onBindViewHolder(PhotoViewHolder holder, int position) {
         if(holder instanceof PhotoViewHolder){
             PhotoViewHolder pvHolder = (PhotoViewHolder) holder;
-            pvHolder.onBind(mItems.get(position), context);
+            pvHolder.onBind(mItems.get(position), context);  // 파이어베이스 적용을 위해 context도 매개변수로 보냄
             Log.d("asdf", "onbindviewholder");
         }
     }

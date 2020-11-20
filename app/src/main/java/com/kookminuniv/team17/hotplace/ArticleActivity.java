@@ -1,4 +1,7 @@
-// ArticleActivity: 글 화면. 사진뷰, 글쓴이, 시간, 제목, 내용, 위치 버튼
+// AritlceActivity
+// 기능 : 글 화면. 인텐트로 article_id 받아와서 해당하는 db, storage 정보를 뿌려줌.
+//      위치 버튼 클릭시 지도에 해당 글의 위치를 표시하는 화면을 띄워줌.
+// 개발 : 김명호
 
 package com.kookminuniv.team17.hotplace;
 
@@ -49,7 +52,6 @@ import java.util.List;
 
 public class ArticleActivity extends AppCompatActivity {
     UserInformation user;
-    CacheClear cc;
 
     public String title, contents, time, user_id, address, article_id;
     public Double longitude, latitude;
@@ -57,7 +59,6 @@ public class ArticleActivity extends AppCompatActivity {
     public ArrayList<String> imageNames;
     public ArrayList<Uri> filePath;
     ArrayList<ImgData> items = null;
-    File cacheFolder;
 
     ViewPager2 vp2;
     TextView user_idText, timeText, titleText, contentsText, noimgText, addressText;
@@ -75,23 +76,17 @@ public class ArticleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_article);
 
-        // 인텐트 받아옴 - user(location, user_id, login) / article_id
+        // 인텐트 받아옴 - user(location, address, goo, user_id, login) / article_id
         Intent intent = getIntent();
         if(intent != null){
             user = (UserInformation)intent.getSerializableExtra("UserObject");
             article_id = intent.getStringExtra("article_id");
-            Log.d("AA : user_id", user.getUser_id());
-            Log.d("AA : article_id", article_id);
         }
 
         // 액션 바
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("글");
         actionBar.setDisplayHomeAsUpEnabled(true);  // 뒤로가기
-
-        // 캐쉬 클리어
-        cc = new CacheClear();
-        cc.clearCache(this);
 
         vp2 = (ViewPager2) findViewById(R.id.vp2);
         user_idText = (TextView) findViewById(R.id.user_idText);
@@ -106,11 +101,6 @@ public class ArticleActivity extends AppCompatActivity {
         filePath = new ArrayList<Uri>();
 
         storageRef = storage.getReference();
-        // 캐쉬 폴더(cache/images)
-        cacheFolder = new File(getApplicationContext().getCacheDir().toString() + "/images");
-        if(!cacheFolder.exists()){
-            cacheFolder.mkdir();
-        }
 
         // DB와 스토리지에서 글 정보 가져옴
         getInfoFromDB();
@@ -137,10 +127,10 @@ public class ArticleActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         articles_count = dataSnapshot.child("articles_count").getValue(int.class);
-                        articleRef.child("articles_count").setValue(articles_count-1);  // 갯수 하나 감소
+                        articleRef.child("articles_count").setValue(articles_count-1);  // 글 갯수 하나 감소
+
                         // 이미지가 있다면 스토리지에 접근해서 삭제
                         for(int i=0; i<imageCount; i++){
-                            //String strI = Integer.toString(i);
                             String deleteImgPath = imageNames.get(i);
                             FirebaseUser fbuser = mAuth.getCurrentUser();
                             if(fbuser != null){
@@ -150,7 +140,6 @@ public class ArticleActivity extends AppCompatActivity {
                                 signInAnonymously();
                             }
                         }
-
                         // DB article 삭제
                         articleRef.child(article_id).removeValue();
                     }
@@ -160,7 +149,7 @@ public class ArticleActivity extends AppCompatActivity {
 
                 Toast.makeText(getApplicationContext(), "해당 글이 삭제되었습니다.", Toast.LENGTH_SHORT).show();
 
-                cc.clearCache(ArticleActivity.this);
+                // 인텐트 보냄 - user(location, address, goo, user_id, login)
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.putExtra("UserObject", user);
                 startActivity(intent);
@@ -192,7 +181,7 @@ public class ArticleActivity extends AppCompatActivity {
                         longitude = dataSnapshot.child(article_id).child("location_Longitude").getValue(Double.class);  // 경도
                         imageCount = dataSnapshot.child(article_id).child("image_count").getValue(int.class);  // 이미지 갯수
 
-                        // articles의 user_id 와 user의 user_id가 같으면 삭제 가능
+                        // articles의 user_id 와 user의 user_id가 같으면 삭제 버튼 활성화
                         if(user.getUser_id().equals(user_id)){
                             deleteBtn.setVisibility(View.VISIBLE);
                         }
@@ -211,10 +200,12 @@ public class ArticleActivity extends AppCompatActivity {
                         timeText.setText(time);
                         addressText.setText(shortedAddress);
 
+                        // DB(articles) 접속 - 이미지 이름 가져옴
                         DatabaseReference imageDREf = articleRef.child(article_id).child("image_names");
                         imageDREf.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                // 아이템 리스트에 이미지 이름 저장
                                 if (imageCount == 0) {
                                     ImgData item = new ImgData("None");
                                     items.add(item);
@@ -227,6 +218,7 @@ public class ArticleActivity extends AppCompatActivity {
                                         items.add(item);
                                     }
                                 }
+                                // 커스텀 어뎁터에 아이템 리스트 연결 후 ViewPager2에 연결
                                 PhotoAdapter adapter = new PhotoAdapter(items);
                                 vp2.setAdapter(adapter);
                             }
@@ -266,7 +258,6 @@ public class ArticleActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        cc.clearCache(this);
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         intent.putExtra("UserObject", user);
         startActivity(intent);
@@ -278,6 +269,5 @@ public class ArticleActivity extends AppCompatActivity {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        cc.clearCache(this);
     }
 }

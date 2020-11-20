@@ -1,3 +1,7 @@
+// MypageActivity
+// 기능 : 로그인된 유저의 정보를 표시
+// 개발 : 김명호
+
 package com.kookminuniv.team17.hotplace;
 
 import androidx.annotation.NonNull;
@@ -32,11 +36,10 @@ public class MypageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mypage);
 
-        // 인텐트 받아옴 - user(location, user_id, login)
+        // 인텐트 받아옴 - user(location, address, goo, user_id, login)
         Intent intent = getIntent();
         if(intent != null) {
             user = (UserInformation) intent.getSerializableExtra("UserObject");
-            Log.d("MA : user_id", user.getUser_id());
         }
 
         // 액션 바
@@ -50,7 +53,7 @@ public class MypageActivity extends AppCompatActivity {
 
         useridText.setText(user.getUser_id());
 
-        // user_id로 가입일 가져옴
+        // DB(users) 접속 -  user_id로 가입일 가져옴
         usersRef = db.getReference().child("users");
         usersRef.child(user.getUser_id()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

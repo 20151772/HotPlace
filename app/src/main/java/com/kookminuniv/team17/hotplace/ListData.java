@@ -1,3 +1,7 @@
+// ListData
+// 기능 : 리스트뷰에 넣을 데이터 타입
+// 개발 : 고동훈, 김명호(파이어베이스 적용을 위해 구조 변경)
+
 package com.kookminuniv.team17.hotplace;
 
 public class ListData {

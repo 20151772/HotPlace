@@ -1,4 +1,6 @@
-// LocationActivity: 글에서 위치를 누르면 지도 화면이 뜨고 그 위치에 맞는 장소가 표시됨
+// LocationActivity
+// 기능 : ArticleActivity에서 불러온 위도 경도 값으로 지도에 그 위치 표시
+// 개발 : 장요셉, 김명호(구현 적용)
 
 package com.kookminuniv.team17.hotplace;
 

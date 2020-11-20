@@ -1,4 +1,7 @@
-// LoginActivity: 로그인 기능
+// LoginActivity
+// 기능 : 로그인 화면. 파이어베이스 db와 연동해서 아이디와 비밀번호 정보 확인 후 로그인. 회원가입 버튼.
+// 개발 : 김명호
+
 package com.kookminuniv.team17.hotplace;
 
 import androidx.annotation.NonNull;
@@ -34,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // 인텐트 받아옴 - user(location)
+        // 인텐트 받아옴 - user(location, address, goo)
         Intent intent = getIntent();
         if(intent != null){
             user = (UserInformation)intent.getSerializableExtra("UserObject");
@@ -77,7 +80,7 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
-                // DB(user) 접속 - 아이디 및 비밀번호 체크
+                // DB(users) 접속 - 아이디 및 비밀번호 체크
                 final DatabaseReference dbRef = db.getReference().child("users");
                 dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -94,7 +97,13 @@ public class LoginActivity extends AppCompatActivity {
                                     user.setUser_id(user_id);
                                     user.setLogin(true);
 
-                                    // 인텐트 보냄 - user(location, user_id, login)
+                                    // 못 받아왔으면 리턴
+                                    if(user.getUser_id() == null){
+                                        Toast.makeText(getApplicationContext(), "로그인에 실패하였습니다. 잠시 후 다시 시도해주세요.", Toast.LENGTH_SHORT).show();
+                                        return;
+                                    }
+
+                                    // 인텐트 보냄 - user(location, address, goo, user_id, login)
                                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                     intent.putExtra("UserObject", user);
                                     Toast.makeText(getApplicationContext(), "로그인 되었습니다.", Toast.LENGTH_SHORT).show();

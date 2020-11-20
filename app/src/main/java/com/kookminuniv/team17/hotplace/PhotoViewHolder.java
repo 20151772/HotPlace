@@ -1,3 +1,7 @@
+// PhotoViewHolder
+// 기능 : 뷰페이져2의 뷰홀더
+// 개발 : 김명호
+
 package com.kookminuniv.team17.hotplace;
 
 import android.content.Context;
@@ -32,6 +36,7 @@ public class PhotoViewHolder extends RecyclerView.ViewHolder {
             imageView.setImageResource(R.drawable.android);
         }
         else{
+            // 스토리지 접속 - 글라이드로 해당 이미지를 이미지뷰에 뿌려줌
             StorageReference imageSRef = FirebaseStorage.getInstance().getReference().child(data.getImg());
             imageSRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
                 @Override
