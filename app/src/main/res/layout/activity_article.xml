@@ -319,21 +319,13 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/editBtn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="수정"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:visibility="gone" />
-
-                    <Button
                         android:id="@+id/deleteBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:background="#E53C39"
                         android:text="삭제"
+                        android:textColor="#FFFFFF"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:visibility="gone" />
