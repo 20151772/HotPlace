@@ -272,6 +272,15 @@ public class ArticleWriteActivity extends AppCompatActivity {
 
         locationManager.removeUpdates(locationListener);
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+
+        if(currentLocation == null){
+            Location gpsLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            currentLocation = gpsLocation;
+            if(currentLocation == null){
+                Location networkLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                currentLocation = networkLocation;
+            }
+        }
     }
 
     // 현재 위도경도 -> 주소정보 변환 후 가져옴

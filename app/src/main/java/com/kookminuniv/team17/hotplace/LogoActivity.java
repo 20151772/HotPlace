@@ -59,13 +59,7 @@ public class LogoActivity extends AppCompatActivity {
         tmp = (TextView) findViewById(R.id.logoText);
         logoImg = (ImageView) findViewById(R.id.logoImage);
 
-        // 잠깐 기다림
-        try {
-            user = new UserInformation();
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        user = new UserInformation();
 
         // 위치 권한을 받아옴
         getPermission();
@@ -81,7 +75,7 @@ public class LogoActivity extends AppCompatActivity {
 
                 // 못 받아왔으면 리턴
                 if(user.getAddress() == null){
-                    Toast.makeText(getApplicationContext(), "현재 위치를 불러오지 못했습니다. 잠시 후 다시 시도해주세요.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "위치 정보를 불러오는 중입니다\n  3초 후 다시 눌러주세요", Toast.LENGTH_LONG).show();
                     return;
                 }
 
@@ -126,6 +120,15 @@ public class LogoActivity extends AppCompatActivity {
         locationManager.removeUpdates(locationListener);
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
 
+        if(user.getUserLocation() == null){
+            Location gpsLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            user.setUserLocation(gpsLocation);
+            if(user.getUserLocation() == null){
+                Location networkLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                user.setUserLocation(networkLocation);
+            }
+        }
+
         // 현재 위치를 무사히 받아왔다면,
         if(user.getUserLocation() != null) {
             // 로케이션 -> 주소
@@ -157,12 +160,7 @@ public class LogoActivity extends AppCompatActivity {
         @Override
         public void onLocationChanged(Location location) {
             LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-            if(location == null){
-                Toast.makeText(getApplicationContext(), "위치 정보 획득에 실패하였습니다. 다시 시도해주세요.", Toast.LENGTH_SHORT).show();
-            }
-            else{
-                user.setUserLocation(location);
-            }
+            user.setUserLocation(location);
             locationManager.removeUpdates(this);
         }
         @Override
